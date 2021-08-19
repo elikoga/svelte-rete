@@ -1,0 +1,14 @@
+# https://numtide.github.io/devshell
+[[commands]]
+name = "node"
+package = "nodejs"
+
+[[commands]]
+name = "npm"
+package = "nodejs"
+help = "Node package manager"
+
+[[commands]]
+name = "dev"
+command = "npm run dev"
+help = "Runs the application in dev mode"
