@@ -3,7 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
 import sveltePreprocess from 'svelte-preprocess';
 import livereload from 'rollup-plugin-livereload';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import css from 'rollup-plugin-css-only';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
 
@@ -59,16 +59,20 @@ export default {
     }),
     css({
       output: (styles, styleNodes) => {
-        existsSync('dist/') && mkdirSync('dist/', { recursive: true });
-        writeFileSync('dist/bundle.css', styles);
-        existsSync('public/build/') && mkdirSync('public/build/', { recursive: true });
-        demo && writeFileSync('public/build/bundle.css', styles);
+        existsSync('./dist/') && mkdirSync('./dist/', { recursive: true });
+        console.log("Writing CSS...");
+        writeFileSync('./dist/bundle.css', styles);
+        existsSync('./public/build/') && mkdirSync('./public/build/', { recursive: true });
+        demo && writeFileSync('./public/build/bundle.css', styles);
       }
     }),
     resolve(),
     typescript({
       sourceMap: demo,
-      inlineSources: demo
+      inlineSources: demo,
+      declaration: true,
+      declarationDir: "./dist",
+      outDir: "./dist"
     }),
     demo && serve(),
     demo && livereload('public'),

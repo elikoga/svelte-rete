@@ -5,7 +5,7 @@
   import ReteSvelteRenderPlugin, {
     ReteComponent,
     ReteControl,
-  } from "./ReteSvelteRenderPlugin";
+  } from "./ReteSvelteRenderPlugin/index.ts";
 
   export let appId = "svelte-rete@0.0.1";
 
