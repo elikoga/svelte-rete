@@ -1,7 +1,13 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+  },
   "include": [
     "src/**/*"
+  ],
+  "typeRoots": [
+    "src/global.d.ts"
   ],
   "exclude": [
     "node_modules/*",
